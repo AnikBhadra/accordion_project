@@ -1,13 +1,22 @@
 import React, { useState } from 'react'
-const Question = (props) => {
-    const { title } = props;
 
+const Question = (props) => {
+    const { title, info } = props
+    // add a state variable here
+
+    const [visibility, setVisibility] = useState(false);
     return (
-        <div>
-            <h2>{title}</h2>
-            <h2>something is going on</h2>
-        </div>
+        <article className="question">
+            <header>
+                <h4>{title}</h4>
+                {/* make this toggle functionality onClick */}
+                <button className="btn" onClick={() => setVisibility((visibility) => !visibility)}>{visibility === false ? '+' : '-'}</button>
+            </header>
+            {/* make this render conditionally */}
+            <p>{visibility === false ? null : info}</p>
+        </article>
     )
 }
 
 export default Question
+
